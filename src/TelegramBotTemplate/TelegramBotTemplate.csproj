@@ -13,7 +13,4 @@
         <PackageReference Include="Telegram.Bot" Version="21.11.0" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Data\Keyboards\" />
-    </ItemGroup>
 </Project>
