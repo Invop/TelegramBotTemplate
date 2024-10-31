@@ -4,6 +4,7 @@ using TelegramBotTemplate;
 using TelegramBotTemplate.Abstract;
 using TelegramBotTemplate.Configuration;
 using TelegramBotTemplate.Services;
+using TelegramBotTemplate.Services.Messaging;
 
 var builder = Host.CreateApplicationBuilder(args);
 builder.Services.AddSystemd();
@@ -19,6 +20,8 @@ builder.Services.AddHttpClient("telegram_bot_client").AddTypedClient<ITelegramBo
         TelegramBotClientOptions options = new(botConfiguration.BotToken);
         return new TelegramBotClient(options, httpClient);
     });
+builder.Services.AddScoped<IMessageHandler, MessageHandler>();
+builder.Services.AddScoped<MessageProcessor>();
 
 builder.Services.AddScoped<UpdateHandler>();
 builder.Services.AddScoped<ReceiverService>();
